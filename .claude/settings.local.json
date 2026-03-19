@@ -16,7 +16,14 @@
       "Bash(npx prisma:*)",
       "Bash(rm src/index.js)",
       "Bash(mv tests/example.test.js tests/sanity.test.js)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(grep -rn \"YOUR_NAME\\\\|PROJECT_NAME\\\\|YOUR_\\\\|REPO_NAME\\\\|GITHUB_USERNAME\\\\|yourdomain\\\\|Replace with\\\\|placeholder\\\\|frontend-starter-template\" /home/kwametech/projects/payment-system --include=*.md --include=*.json --include=*.yml -l)",
+      "Bash(node:*)",
+      "Bash(psql --version)",
+      "Bash(pg_isready)",
+      "Bash(docker --version)",
+      "Bash(mkdir -p /home/kwametech/projects/payment-system-client)",
+      "Read(//home/kwametech/projects/**)"
     ]
   }
 }

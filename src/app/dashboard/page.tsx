@@ -6,10 +6,12 @@ import AppShell from '@/components/layout/AppShell';
 import Badge from '@/components/ui/Badge';
 import { usePayouts } from '@/hooks/usePayouts';
 import { useAuth } from '@/context/AuthContext';
+import { useUnattributedTransactions } from '@/hooks/useClients';
 
 export default function DashboardPage() {
   const { user } = useAuth();
   const { data: payouts, isLoading } = usePayouts();
+  const { data: unattributed } = useUnattributedTransactions();
 
   const recent = payouts?.slice(0, 5) ?? [];
 
@@ -23,6 +25,26 @@ export default function DashboardPage() {
           <p style={{ margin: '0 0 32px', color: '#666', fontSize: 14 }}>
             Welcome back, {user?.fullName}
           </p>
+
+          {unattributed && unattributed.length > 0 && (
+            <Link
+              href="/unattributed"
+              style={{
+                display: 'block',
+                marginBottom: 20,
+                padding: '12px 16px',
+                background: '#fef3c7',
+                border: '1px solid #fbbf24',
+                borderRadius: 6,
+                textDecoration: 'none',
+                color: '#92400e',
+                fontSize: 14,
+                fontWeight: 500,
+              }}
+            >
+              {unattributed.length} unattributed payment{unattributed.length !== 1 ? 's' : ''} need review &rarr;
+            </Link>
+          )}
 
           <div style={{ display: 'flex', gap: 16, marginBottom: 32 }}>
             <Link

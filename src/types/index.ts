@@ -51,3 +51,62 @@ export interface ApiError {
   error: string;
   details?: Array<{ msg: string; path: string }>;
 }
+
+export type SettlementStatus = 'queued' | 'submitted' | 'pending' | 'successful' | 'failed';
+
+export interface Client {
+  id: string;
+  businessName: string;
+  email: string;
+  clientCode: string;
+  mobileNumber: string;
+  mobileOperator: string;
+  countryCode: string;
+  currency: string;
+  feeRate: number | string;
+  isActive: boolean;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface ClientBalance {
+  grossReceived: number;
+  totalFees: number;
+  totalSettled: number;
+  availableBalance: number;
+}
+
+export interface PayinTransaction {
+  id: string;
+  fincraReference?: string;
+  customerName?: string;
+  customerEmail?: string;
+  customerReference?: string;
+  amount: number | string;
+  currency: string;
+  status: string;
+  clientId?: string;
+  clientCode?: string;
+  isAttributed: boolean;
+  feeAmount?: number | string;
+  netAmount?: number | string;
+  receivedAt?: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface Settlement {
+  id: string;
+  clientId: string;
+  payinId: string;
+  grossAmount: number | string;
+  feeAmount: number | string;
+  netAmount: number | string;
+  currency: string;
+  status: SettlementStatus;
+  payoutRequestId?: string;
+  failureReason?: string;
+  createdAt: string;
+  settledAt?: string;
+  payoutRequest?: { id: string; clientReference: string; status: string };
+}

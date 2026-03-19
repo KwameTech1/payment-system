@@ -8,6 +8,8 @@ const navItems = [
   { href: '/dashboard', label: 'Dashboard' },
   { href: '/recipients', label: 'Recipients' },
   { href: '/payouts', label: 'Payouts' },
+  { href: '/clients', label: 'Clients' },
+  { href: '/unattributed', label: 'Unattributed' },
 ];
 
 export default function AppShell({ children }: { children: React.ReactNode }) {
