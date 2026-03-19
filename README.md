@@ -48,6 +48,7 @@ npm run dev
 Open [http://localhost:3001](http://localhost:3001).
 
 Login with seeded credentials from the backend:
+
 - `admin@payout.internal` / `Admin1234!`
 - `operator@payout.internal` / `Operator1234!`
 
@@ -96,15 +97,15 @@ payment-system/
 
 ## Scripts
 
-| Script | Description |
-|--------|-------------|
-| `npm run dev` | Start dev server on port 3001 |
-| `npm run build` | Next.js production build |
-| `npm start` | Start production server on port 3001 |
-| `npm test` | Run Jest tests |
-| `npm run lint` | ESLint (zero warnings) |
-| `npm run format` | Prettier write |
-| `npm run format:check` | Prettier check (used in CI) |
+| Script                 | Description                          |
+| ---------------------- | ------------------------------------ |
+| `npm run dev`          | Start dev server on port 3001        |
+| `npm run build`        | Next.js production build             |
+| `npm start`            | Start production server on port 3001 |
+| `npm test`             | Run Jest tests                       |
+| `npm run lint`         | ESLint (zero warnings)               |
+| `npm run format`       | Prettier write                       |
+| `npm run format:check` | Prettier check (used in CI)          |
 
 ---
 
@@ -112,9 +113,9 @@ payment-system/
 
 Copy `.env.example` to `.env.local` for local development. Never commit `.env.local`.
 
-| Variable | Required | Description |
-|----------|----------|-------------|
-| `NEXT_PUBLIC_API_BASE_URL` | Yes | Backend API base URL |
+| Variable                   | Required | Description          |
+| -------------------------- | -------- | -------------------- |
+| `NEXT_PUBLIC_API_BASE_URL` | Yes      | Backend API base URL |
 
 **Local:** `http://localhost:3000`
 **Production:** Your Railway service URL

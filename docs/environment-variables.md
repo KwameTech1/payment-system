@@ -6,10 +6,10 @@ This document describes all environment variables used in the frontend.
 
 ## File Convention
 
-| File | Purpose | Committed? |
-|------|---------|------------|
-| `.env.example` | Reference — shows all expected variables | Yes |
-| `.env.local` | Local developer overrides | **No** |
+| File           | Purpose                                  | Committed? |
+| -------------- | ---------------------------------------- | ---------- |
+| `.env.example` | Reference — shows all expected variables | Yes        |
+| `.env.local`   | Local developer overrides                | **No**     |
 
 Never commit real values. `.env.local` is in `.gitignore`.
 

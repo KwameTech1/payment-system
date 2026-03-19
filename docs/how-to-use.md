@@ -50,9 +50,9 @@ The app runs at [http://localhost:3001](http://localhost:3001) (port 3001 to avo
 
 Use the seeded internal credentials (created by `npm run db:seed` in the backend):
 
-| Email | Password |
-|-------|----------|
-| `admin@payout.internal` | `Admin1234!` |
+| Email                      | Password        |
+| -------------------------- | --------------- |
+| `admin@payout.internal`    | `Admin1234!`    |
 | `operator@payout.internal` | `Operator1234!` |
 
 ---
@@ -89,13 +89,13 @@ Must pass cleanly before deploying to Vercel.
 
 ## Pages
 
-| Route | Description |
-|-------|-------------|
-| `/login` | Email + password login |
-| `/dashboard` | Recent 5 payouts + New Payout CTA |
-| `/recipients` | Manage recipients (add, approve, suspend) |
-| `/payouts` | Full payout history with status filter |
-| `/payouts/new` | 3-step payout creation form |
+| Route           | Description                                                  |
+| --------------- | ------------------------------------------------------------ |
+| `/login`        | Email + password login                                       |
+| `/dashboard`    | Recent 5 payouts + New Payout CTA                            |
+| `/recipients`   | Manage recipients (add, approve, suspend)                    |
+| `/payouts`      | Full payout history with status filter                       |
+| `/payouts/new`  | 3-step payout creation form                                  |
 | `/payouts/[id]` | Payout detail, Retry + Sync Status buttons, 30s auto-refresh |
 
 ---

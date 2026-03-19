@@ -9,6 +9,7 @@ This project adheres to [Semantic Versioning](https://semver.org/) and the forma
 ## [Unreleased]
 
 ### Added
+
 - Next.js 14 App Router frontend for Payout Operations Platform
 - JWT authentication with localStorage persistence and AuthContext
 - React Query hooks for payouts and recipients with auto-refresh on pending statuses
@@ -24,4 +25,5 @@ This project adheres to [Semantic Versioning](https://semver.org/) and the forma
 ## [0.1.0] - 2026-03-19
 
 ### Added
+
 - Initial project scaffold from frontend-starter-template
