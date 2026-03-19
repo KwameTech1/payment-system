@@ -1,221 +1,109 @@
-# How to Use This Template
+# Local Development Guide
 
-This guide walks you through everything you need to do after creating a new repository from `frontend-starter-template` — from first clone to live Vercel deployment.
+This guide walks through running the Payout Operations frontend locally.
 
 ---
 
 ## Prerequisites
 
-- Node.js >= 18.x
-- npm >= 9.x
-- A GitHub account
-- A Vercel account (free tier is fine)
+- Node.js >= 18
+- npm >= 9
+- Backend running at `http://localhost:3000` (see `payment-system-backend` repo)
 
 ---
 
-## Step 1 — Create a New Repository from the Template
-
-1. Go to the `frontend-starter-template` repository on GitHub.
-2. Click **"Use this template"** → **"Create a new repository"**.
-3. Give it a name (e.g., `my-app`), choose public or private, then click **"Create repository"**.
-
-> Do not fork. Using the template creates a clean repo with no commit history.
-
----
-
-## Step 2 — Clone and Install
+## Step 1 — Install Dependencies
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/my-app.git
-cd my-app
 npm install
 ```
 
 ---
 
-## Step 3 — Replace All Placeholders
-
-Search the project for these strings and replace them with real values:
-
-| Placeholder         | Replace with                         | Where it appears       |
-| ------------------- | ------------------------------------ | ---------------------- |
-| `[PROJECT_NAME]`    | Your app's display name              | `README.md`            |
-| `[GITHUB_USERNAME]` | Your GitHub username or org          | `README.md`            |
-| `[REPO_NAME]`       | The new repo's name (e.g., `my-app`) | `README.md`            |
-| `[YOUR_NAME]`       | Your full name or org name           | `README.md`, `LICENSE` |
-| `[YEAR]`            | Current year (e.g., `2026`)          | `LICENSE`              |
-
----
-
-## Step 4 — Set Up Your Framework
-
-The template is framework-neutral. Plug in your framework of choice:
-
-### Option A — Vite (React, Vue, Svelte, Vanilla)
-
-```bash
-npm create vite@latest . -- --template react
-# or: --template vue, --template svelte, etc.
-```
-
-Then update `package.json` scripts:
-
-```json
-"dev":   "vite",
-"build": "vite build"
-```
-
-### Option B — Next.js
-
-```bash
-npx create-next-app@latest .
-```
-
-Then update `package.json` scripts:
-
-```json
-"dev":   "next dev",
-"build": "next build"
-```
-
-Also update `vercel.json`:
-
-- Remove `"outputDirectory": "dist"` — Vercel auto-detects Next.js output.
-- Set `"framework": "nextjs"` (or remove the `framework` key entirely to let Vercel detect it).
-
-### After installing your framework
-
-- Delete `src/index.js` — it was a placeholder.
-- The framework's own entry point (`src/main.jsx`, `app/page.tsx`, etc.) replaces it.
-
----
-
-## Step 5 — Configure Environment Variables
+## Step 2 — Configure Environment
 
 ```bash
 cp .env.example .env.local
 ```
 
-Open `.env.local` and fill in your local values:
+`.env.local` is pre-filled with local defaults:
 
 ```env
-NODE_ENV=development
-VITE_API_BASE_URL=http://localhost:3001
+NEXT_PUBLIC_API_BASE_URL=http://localhost:3000
 ```
 
-**Rules:**
-
-- `.env.local` is gitignored — never commit it.
-- `.env.example` is committed — keep it up to date as you add new variables.
-- Use `VITE_` prefix for Vite projects, `NEXT_PUBLIC_` for Next.js, when a variable needs to be accessible in the browser.
-- Never put secrets (API keys, tokens) in any `VITE_` or `NEXT_PUBLIC_` variable.
-
-See [`environment-variables.md`](./environment-variables.md) for the full reference.
+This points the frontend at the local backend. Never commit `.env.local`.
 
 ---
 
-## Step 6 — Verify the Baseline Works
-
-Before writing any project code, confirm the template scaffolding is clean:
+## Step 3 — Start the Dev Server
 
 ```bash
-npm run format:check   # should pass
-npm run lint           # should pass
-npm test               # should pass (2 example tests)
+npm run dev
 ```
 
-If all three pass, the baseline is healthy.
+The app runs at [http://localhost:3001](http://localhost:3001) (port 3001 to avoid conflict with the backend on 3000).
 
 ---
 
-## Step 7 — Update the Changelog
+## Step 4 — Log In
 
-Open `CHANGELOG.md` and log your initial setup entry under `[Unreleased]`:
+Use the seeded internal credentials (created by `npm run db:seed` in the backend):
 
-```md
-## [Unreleased]
-
-### Added
-
-- Initial project setup with Vite + React.
-```
+| Email | Password |
+|-------|----------|
+| `admin@payout.internal` | `Admin1234!` |
+| `operator@payout.internal` | `Operator1234!` |
 
 ---
 
-## Step 8 — Make Your First Commit
+## Step 5 — Run Tests
 
 ```bash
-git add .
-git commit -m "chore: initialize project from frontend-starter-template"
-git push origin main
+npm test
 ```
 
-Go to the **Actions** tab on GitHub and confirm the CI workflow passes.
+2 sanity tests pass.
 
 ---
 
-## Step 9 — Connect to Vercel
+## Step 6 — Lint and Format
 
-1. Go to [vercel.com/new](https://vercel.com/new).
-2. Click **"Import Git Repository"** and select `my-app`.
-3. Verify the build settings Vercel detects:
-   - **Build Command:** `npm run build`
-   - **Output Directory:** `dist` (Vite) or auto-detected (Next.js)
-   - **Install Command:** `npm install`
-4. Before clicking Deploy, add your environment variables:
-   - Go to **"Environment Variables"** in the import screen.
-   - Add `VITE_API_BASE_URL` (or `NEXT_PUBLIC_API_BASE_URL`) with your production API URL.
-   - Set it for **Production** scope. Add a staging value for **Preview** scope if you have one.
-5. Click **"Deploy"**.
-
-From this point:
-
-- Pushing to `main` → automatic production deployment.
-- Opening a pull request → automatic preview deployment with a unique URL.
-
-See [`deployment.md`](./deployment.md) for the full Vercel guide including custom domains, rollback, and the post-deploy checklist.
+```bash
+npm run lint          # ESLint (zero warnings)
+npm run format:check  # Prettier check
+npm run format        # Prettier write (auto-fix)
+```
 
 ---
 
-## What to Clean Up After Setup
+## Step 7 — Production Build
 
-Once your framework is installed and everything works, remove these template artifacts:
+```bash
+npm run build
+```
 
-| File / Item                    | Action                                            |
-| ------------------------------ | ------------------------------------------------- |
-| `src/index.js`                 | Delete — replaced by your framework's entry point |
-| `tests/example.test.js`        | Delete or replace with real tests                 |
-| `public/.gitkeep`              | Delete once you add a real file to `public/`      |
-| `scripts/.gitkeep`             | Delete once you add a real script to `scripts/`   |
-| `README.md` placeholder text   | Replace all `[BRACKET]` values with real content  |
-| `package.json` `"name"` field  | Update to your actual project name                |
-| `package.json` `"description"` | Update to a real description                      |
+Must pass cleanly before deploying to Vercel.
 
 ---
 
-## Ongoing Workflow
+## Pages
 
-| Task                 | Command                |
-| -------------------- | ---------------------- |
-| Start dev server     | `npm run dev`          |
-| Run tests            | `npm test`             |
-| Lint code            | `npm run lint`         |
-| Format code          | `npm run format`       |
-| Check formatting     | `npm run format:check` |
-| Build for production | `npm run build`        |
+| Route | Description |
+|-------|-------------|
+| `/login` | Email + password login |
+| `/dashboard` | Recent 5 payouts + New Payout CTA |
+| `/recipients` | Manage recipients (add, approve, suspend) |
+| `/payouts` | Full payout history with status filter |
+| `/payouts/new` | 3-step payout creation form |
+| `/payouts/[id]` | Payout detail, Retry + Sync Status buttons, 30s auto-refresh |
 
 ---
 
-## Summary Checklist
+## Architecture Notes
 
-- [ ] Created new repo from template (not forked)
-- [ ] Cloned and ran `npm install`
-- [ ] Replaced all `[PLACEHOLDER]` values
-- [ ] Installed framework and deleted `src/index.js`
-- [ ] Copied `.env.example` → `.env.local` and filled in local values
-- [ ] `npm run format:check`, `npm run lint`, `npm test` all pass
-- [ ] Updated `CHANGELOG.md`
-- [ ] First commit pushed and CI is green
-- [ ] Repo connected to Vercel
-- [ ] Environment variables set in Vercel dashboard
-- [ ] Production deployment live and verified
+- **Auth:** JWT stored in `localStorage` under `payout_token`. `AuthContext` initialises from localStorage on mount.
+- **API calls:** All via `src/lib/api.ts` (Axios). Request interceptor attaches Bearer token. Response interceptor clears token and redirects to `/login` on 401.
+- **Data fetching:** React Query (`@tanstack/react-query`). Hooks in `src/hooks/`.
+- **Protected routes:** `ProtectedRoute` component redirects to `/login` if not authenticated.
+- **Auto-refresh:** `usePayout` sets `refetchInterval: 30000` while payout status is `submitted` or `pending`.

@@ -9,31 +9,19 @@ This project adheres to [Semantic Versioning](https://semver.org/) and the forma
 ## [Unreleased]
 
 ### Added
-
-- Initial project scaffold from frontend-starter-template.
+- Next.js 14 App Router frontend for Payout Operations Platform
+- JWT authentication with localStorage persistence and AuthContext
+- React Query hooks for payouts and recipients with auto-refresh on pending statuses
+- All pages: login, dashboard, recipients, payouts history, create payout, payout detail
+- Axios instance with request/response interceptors for auth and 401 redirect
+- ProtectedRoute component for authenticated page guarding
+- AppShell sidebar navigation
+- Color-coded status Badge component
+- TypeScript strict mode with shared type definitions
 
 ---
 
-<!-- Template for future entries:
-
-## [X.Y.Z] - YYYY-MM-DD
+## [0.1.0] - 2026-03-19
 
 ### Added
-- New features
-
-### Changed
-- Changes to existing functionality
-
-### Deprecated
-- Features that will be removed in upcoming releases
-
-### Removed
-- Features removed in this release
-
-### Fixed
-- Bug fixes
-
-### Security
-- Security patches
-
--->
+- Initial project scaffold from frontend-starter-template
