@@ -9,7 +9,14 @@
       "Bash(git tag:*)",
       "Bash(git push:*)",
       "Bash(gh run:*)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(git commit:*)",
+      "Bash(cat /home/kwametech/projects/payment-system-backend/docs/*.md)",
+      "Bash(npm install:*)",
+      "Bash(npx prisma:*)",
+      "Bash(rm src/index.js)",
+      "Bash(mv tests/example.test.js tests/sanity.test.js)",
+      "Bash(git add:*)"
     ]
   }
 }
