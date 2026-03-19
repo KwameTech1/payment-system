@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run:*)",
+      "Bash(npm test:*)",
+      "Bash(find /home/kwametech/projects/frontend-starter-template -not -path */node_modules/* -not -path */.git/* -type f -o -type d)",
+      "Bash(git checkout:*)",
+      "Bash(git pull:*)",
+      "Bash(git tag:*)",
+      "Bash(git push:*)",
+      "Bash(gh run:*)"
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+out/
+.next/
+.nuxt/
+
+# Coverage
+coverage/
+
+# Cache
+.cache/
+.parcel-cache/
+
+# Env files
+.env*
+
+# Tool internals
+.claude/
+.vercel/
+
+# Project config docs
+CLAUDE.md
+
+# Lock files (Prettier can format these but it's often undesirable)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
